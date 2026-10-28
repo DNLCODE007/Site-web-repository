@@ -1,0 +1,362 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #421b3a 0%, #752d55 48%, #b14c70 100%);
+    color: #562d43;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 16px clamp(16px, 6vw, 72px);
+    display: grid;
+    place-items: safe center;
+}
+
+.ambience {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.card {
+    position: relative;
+    width: min(100%, 940px);
+    min-height: min(680px, calc(100svh - 32px));
+    padding: clamp(28px, 6vh, 64px) clamp(24px, 8vw, 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    background: linear-gradient(145deg, rgba(255, 250, 247, 0.98), rgba(255, 236, 241, 0.96));
+    box-shadow: 0 28px 90px rgba(32, 7, 29, 0.32), inset 0 0 50px rgba(255, 255, 255, 0.65);
+    text-align: center;
+    animation: card-arrive 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.flower {
+    margin-bottom: 12px;
+    color: #d986a1;
+    font-size: 2rem;
+    animation: flower-sway 4s ease-in-out infinite;
+}
+
+.eyebrow {
+    margin: 0 0 24px;
+    color: #a74b6b;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.poem {
+    margin: 0;
+    color: #65354d;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.55;
+}
+
+.poem > span {
+    display: block;
+}
+
+.poem-question {
+    margin-top: 16px;
+    color: #bb416a;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 700;
+}
+
+.hint {
+    margin: 26px 0 34px;
+    color: #997383;
+    font-size: 1.1rem;
+}
+
+.buttons {
+    min-height: 76px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+}
+
+button {
+    min-height: 66px;
+    padding: 17px 36px;
+    border: 0;
+    border-radius: 999px;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 700;
+    transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+button:focus-visible {
+    outline: 3px solid #5b2345;
+    outline-offset: 5px;
+}
+
+#yes-btn {
+    background: linear-gradient(135deg, #d94d78, #b93468);
+    box-shadow: 0 10px 24px rgba(185, 52, 104, 0.3);
+}
+
+#yes-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 14px 30px rgba(185, 52, 104, 0.4);
+    transform: translateY(-3px);
+}
+
+#no-btn {
+    background: #927986;
+    transform-origin: center;
+}
+
+#no-btn:hover {
+    background: #7d6674;
+}
+
+#no-btn:disabled {
+    color: #755e6c;
+    background: #e3d5dc;
+    box-shadow: none;
+    cursor: not-allowed;
+    filter: saturate(0.5);
+}
+
+.response {
+    min-height: 1.6em;
+    margin: 22px 0 0;
+    color: #ad3b63;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.sparkle,
+.floating-heart {
+    position: absolute;
+    color: rgba(255, 219, 230, 0.68);
+    user-select: none;
+}
+
+.sparkle {
+    animation: sparkle 4s ease-in-out infinite;
+}
+
+.sparkle-one {
+    top: 12%;
+    left: 12%;
+    font-size: 2.5rem;
+}
+
+.sparkle-two {
+    top: 24%;
+    right: 14%;
+    font-size: 3.5rem;
+    animation-delay: 1.2s;
+}
+
+.sparkle-three {
+    right: 20%;
+    bottom: 12%;
+    font-size: 2rem;
+    animation-delay: 2.3s;
+}
+
+.floating-heart {
+    color: rgba(255, 190, 211, 0.48);
+    animation: drift 9s ease-in-out infinite;
+}
+
+.heart-one {
+    top: 13%;
+    right: 30%;
+    font-size: 1.8rem;
+}
+
+.heart-two {
+    bottom: 16%;
+    left: 18%;
+    font-size: 2.4rem;
+    animation-delay: 2s;
+}
+
+.heart-three {
+    top: 48%;
+    left: 5%;
+    font-size: 1.3rem;
+    animation-delay: 4s;
+}
+
+.heart-four {
+    right: 7%;
+    bottom: 37%;
+    font-size: 1.7rem;
+    animation-delay: 1s;
+}
+
+.celebration {
+    position: fixed;
+    z-index: 2;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.celebration-heart {
+    position: absolute;
+    bottom: -50px;
+    color: #f05e87;
+    animation: heart-rise var(--duration) ease-out var(--delay) forwards;
+    font-size: var(--size);
+    left: var(--left);
+    opacity: 0;
+}
+
+.card.is-celebrating {
+    animation: celebrate 800ms ease-in-out both;
+}
+
+body.has-said-yes {
+    background: linear-gradient(135deg, #542044 0%, #9a3e64 48%, #d17a8c 100%);
+    transition: background 1s ease;
+}
+
+@keyframes card-arrive {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes flower-sway {
+    0%, 100% { transform: rotate(-8deg) scale(1); }
+    50% { transform: rotate(8deg) scale(1.12); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.35; transform: scale(0.8) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.15) rotate(18deg); }
+}
+
+@keyframes drift {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    50% { transform: translateY(-22px) rotate(10deg); }
+}
+
+@keyframes heart-rise {
+    0% { opacity: 0; transform: translateY(0) rotate(-15deg) scale(0.6); }
+    12% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-110vh) rotate(35deg) scale(1.2); }
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1) rotate(0); }
+    30% { transform: scale(1.035) rotate(-1deg); }
+    60% { transform: scale(1.015) rotate(1deg); }
+}
+
+@media (max-width: 540px) {
+    .page {
+        padding: 12px;
+    }
+
+    .card {
+        min-height: calc(100svh - 24px);
+        padding: 30px 22px;
+        border-radius: 28px;
+    }
+
+    .poem > span:not(.poem-question) {
+        display: inline;
+    }
+
+    .poem > span:not(.poem-question)::after {
+        content: " ";
+    }
+
+    .buttons {
+        gap: 12px;
+    }
+
+    button {
+        min-height: 60px;
+        padding: 15px 22px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .page {
+        align-items: start;
+    }
+
+    .card {
+        min-height: 0;
+        padding-block: 24px;
+    }
+
+    .flower {
+        margin-bottom: 4px;
+    }
+
+    .eyebrow {
+        margin-bottom: 12px;
+    }
+
+    .poem {
+        font-size: clamp(1.35rem, 3.5vw, 2rem);
+        line-height: 1.4;
+    }
+
+    .poem-question {
+        margin-top: 8px;
+        font-size: clamp(1.65rem, 4.5vw, 2.6rem);
+    }
+
+    .hint {
+        margin: 14px 0 18px;
+    }
+
+    .response {
+        margin-top: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

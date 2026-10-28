@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#5b2345">
+    <title>Un petit poème pour toi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="ambience" aria-hidden="true">
+        <span class="sparkle sparkle-one">✦</span>
+        <span class="sparkle sparkle-two">✧</span>
+        <span class="sparkle sparkle-three">✦</span>
+        <span class="floating-heart heart-one">♥</span>
+        <span class="floating-heart heart-two">♥</span>
+        <span class="floating-heart heart-three">♥</span>
+        <span class="floating-heart heart-four">♥</span>
+    </div>
+    <main class="page">
+        <section class="card" aria-labelledby="question">
+            <div class="flower" aria-hidden="true">✿</div>
+            <p class="eyebrow">Quelques mots pour toi</p>
+            <h1 id="question" class="poem">
+                <span>Quand ton sourire éclaire mes journées,</span>
+                <span>le monde semble un peu plus beau.</span>
+                <span>Et si nos chemins se rapprochaient…</span>
+                <span class="poem-question">Veux-tu sortir avec moi ? <span aria-hidden="true">♡</span></span>
+            </h1>
+            <p class="hint">Choisis avec ton cœur <span aria-hidden="true">✨</span></p>
+            <div class="buttons">
+                <button id="yes-btn" type="button">Oui, avec plaisir !</button>
+                <button id="no-btn" type="button">Non</button>
+            </div>
+            <p id="response" class="response" aria-live="polite"></p>
+        </section>
+    </main>
+    <div id="celebration" class="celebration" aria-hidden="true"></div>
+</body>
+</html>
